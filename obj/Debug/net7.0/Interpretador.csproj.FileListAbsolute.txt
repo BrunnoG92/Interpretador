@@ -32,3 +32,37 @@ C:\Users\Bruno\OneDrive\Área de Trabalho\Interpretador\obj\Debug\net7.0\refint\
 C:\Users\Bruno\OneDrive\Área de Trabalho\Interpretador\obj\Debug\net7.0\Interpretador.pdb
 C:\Users\Bruno\OneDrive\Área de Trabalho\Interpretador\obj\Debug\net7.0\Interpretador.genruntimeconfig.cache
 C:\Users\Bruno\OneDrive\Área de Trabalho\Interpretador\obj\Debug\net7.0\ref\Interpretador.dll
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\appsettings.Development.json
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\appsettings.json
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Interpretador.exe
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Interpretador.deps.json
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Interpretador.runtimeconfig.json
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Interpretador.dll
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Interpretador.pdb
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Projetos TropicalNet\Interpretador\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.csproj.AssemblyReference.cache
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.AssemblyInfoInputs.cache
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.AssemblyInfo.cs
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.csproj.CoreCompileInputs.cache
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.MvcApplicationPartsAssemblyInfo.cs
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.MvcApplicationPartsAssemblyInfo.cache
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\staticwebassets\msbuild.Interpretador.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\staticwebassets\msbuild.build.Interpretador.props
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Interpretador.props
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.Interpretador.props
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\staticwebassets.build.json
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\staticwebassets.development.json
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\scopedcss\bundle\Interpretador.styles.css
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.csproj.CopyComplete
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.dll
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\refint\Interpretador.dll
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.pdb
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\Interpretador.genruntimeconfig.cache
+C:\Projetos TropicalNet\Interpretador\obj\Debug\net7.0\ref\Interpretador.dll

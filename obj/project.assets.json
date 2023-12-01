@@ -513,27 +513,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bruno\\.nuget\\packages\\": {}
+    "C:\\Users\\HubSoft\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bruno\\OneDrive\\Área de Trabalho\\Interpretador\\Interpretador.csproj",
+      "projectUniqueName": "C:\\Projetos TropicalNet\\Interpretador\\Interpretador.csproj",
       "projectName": "Interpretador",
-      "projectPath": "C:\\Users\\Bruno\\OneDrive\\Área de Trabalho\\Interpretador\\Interpretador.csproj",
-      "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bruno\\OneDrive\\Área de Trabalho\\Interpretador\\obj\\",
+      "projectPath": "C:\\Projetos TropicalNet\\Interpretador\\Interpretador.csproj",
+      "packagesPath": "C:\\Users\\HubSoft\\.nuget\\packages\\",
+      "outputPath": "C:\\Projetos TropicalNet\\Interpretador\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\HubSoft\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -584,7 +581,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

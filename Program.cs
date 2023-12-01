@@ -84,8 +84,8 @@ namespace TextDecoderAPI
                         });
                         
                     });
-                      webBuilder.UseUrls("http://localhost:5120");
-                    //webBuilder.UseUrls("http://servertropical.ddns.net:5120");
+                    //  webBuilder.UseUrls("http://localhost:5120");
+                    webBuilder.UseUrls("http://servertropical.ddns.net:5555");
                 });
     }
 }

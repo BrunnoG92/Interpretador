@@ -30,49 +30,64 @@ public class Analises_Texto
 
         return texto;
     }
+
     public static string ClassificarTexto(string texto, Dictionary<string, List<string>> categorias)
-{
-    texto = RemoverAcentos(texto.ToLower());
-
-    // Verificar se o texto inteiro está na lista
-    foreach (var categoria in categorias)
     {
-        if (categoria.Value.Contains(texto))
-        {
-            return categoria.Key;
-        }
-    }
+        texto = RemoverAcentos(texto.ToLower());
 
-    // Se o texto inteiro nao estiver na lista, dividir e comparar as palavras
-    foreach (var categoria in categorias)
-    {
-        bool contemPalavras = categoria.Value.Exists(str =>
+        // Verificar se o texto inteiro está na lista
+        foreach (var categoria in categorias)
         {
-            if (str.Contains(" "))
+            if (categoria.Value.Any(str => texto.Contains(RemoverAcentos(str.ToLower()))))
             {
-                string[] palavras = str.Split(" ");
-
-                // Procurar pelas duas primeiras palavras no texto
-                string duasPrimeirasPalavras = string.Join(" ", palavras.Take(2));
-                Regex regex = new Regex($@"\b{duasPrimeirasPalavras}\b", RegexOptions.IgnoreCase);
-
-                return regex.IsMatch(texto);
+                return categoria.Key;
             }
-            else
-            {
-                Regex regex = new Regex($@"\b{str}\b", RegexOptions.IgnoreCase);
-                return regex.IsMatch(texto);
-            }
-        });
-
-        if (contemPalavras)
-        {
-            return categoria.Key;
         }
-    }
 
-    return "Outros Atendimentos";
-}
+        // Se o texto inteiro nao estiver na lista, verificar se todas as palavras estão presentes
+        foreach (var categoria in categorias)
+        {
+            bool todasPalavrasPresentes = categoria.Value.All(str =>
+            {
+                return texto.Contains(RemoverAcentos(str.ToLower()));
+            });
+
+            if (todasPalavrasPresentes)
+            {
+                return categoria.Key;
+            }
+        }
+
+        // Se nenhuma das condições acima for atendida, verificar se pelo menos duas palavras estão presentes
+
+        // Quebra o texto em uma lista de palavras
+        string[] palavrasTexto = texto.Split(new[] { ' ', '\t', '\n', '\r', '.', ',', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var categoria in categorias)
+        {
+            // Quebra as palavras-chave, considerando palavras compostas
+            string[] palavrasChave = categoria.Value
+                .SelectMany(str => str.Split(' '))
+                .ToArray();
+
+            // Conta quantas palavras-chave estão presentes na lista de palavras do texto
+            int contadorPalavrasPresentes = palavrasChave.Count(str => palavrasTexto.Contains(str));
+
+            // Verifica se pelo menos duas palavras-chave foram encontradas
+            if (contadorPalavrasPresentes >= 2)
+            {
+                Console.WriteLine($"Palavras-chave encontradas: {string.Join(", ", palavrasChave.Where(str => palavrasTexto.Contains(str)))}");
+                return categoria.Key;
+            }
+        }
+
+        // Se não houver correspondência
+        Console.WriteLine("Nenhuma correspondência encontrada.");
+        return "Outros Atendimentos";
+
+
+
+    }
     public static string ExecutarClassificacao(string mensagemCliente)
     {
         // Exemplo de chamada do método ClassificarTexto após normalizar o texto
@@ -85,24 +100,46 @@ public class Analises_Texto
     {
         return new Dictionary<string, List<string>>
         {
+             { "Falha Internet", new List<string>
+                {
+                "problema rede",
+                "sem sinal",
+                "luz vermelha",
+                "sem acesso",
+                "sem conexão",
+                "sem enternet",
+                "obtendo ip",
+                "funcionando",
+                "segura",
+                "nao funciona",
+                "nao conecta",
+                "site nao abre",
+                "sem internet",
+                "caindo",
+                "suporte tecnico"
+               }
+            },
             { "Lentidão", new List<string>
                 {
                 @"oscilando",
-                "internet ruim",
-                "conexão ruim",
+                "orrivel",
+                "falta conexao",
+                "ruim",
+                "conexao ruim",
                 "falha sinal",
-                "internet horrivel",
-                "sem net",
+                "horrivel",
+                "net esta lenta",
+                "baixa velocidade",
+                "nao esta passando",
                 "wifi problema",
                 "lento",
                 "instabilidade",
                 "nao está chegando",
                 "travando",
                 "sem sinal",
-                "lentidão",
+                "lentidao",
                 "lenta",
-                "internet pessima",
-                "internet ruim"
+                "internet pessima"
                 }
             },
             { "Troca de Senha", new List<string>
@@ -116,6 +153,7 @@ public class Analises_Texto
             },
             { "Falha Telefonia", new List<string>
                 {
+                "telefone sem linha",
                 "nao escuto",
                 "ligacao muda",
                 "ruido na ligação",
@@ -125,48 +163,21 @@ public class Analises_Texto
             },
             { "Falha TV", new List<string>
                 {
-               
+
                 "canais fora",
                 "tv travando",
                 "falha TV"
                 }
             },
-            { "Falha Internet", new List<string>
-                {
-                "sem conexão",
-                "obtendo ip",
-                "funcionando",
-                "segura",
-                "internet nao funciona",
-                "nao conecta",
-                "site nao abre",
-                "sem internet",
-                "internet caindo",
-                "caindo"
-                }
-            },
-            { "Financeiro", new List<string>
-                {
-                "financeiro",
-                "data",
-                "carne",
-                "nota fiscal",
-                "nf",
-                "negociar",
-                "negociacao",
-                "renegociacao",
-                "renegociar",
-                "cobranca",
-                "fatura",
-                "faturas",
-                "mudar endereco"
-            }
-            },
+
+
             { "Comercial", new List<string>
             {
-                "carne",
+                "mudar plano",
+                "mudar internet",
+                "atendente",
+                "me atender",
                 "comercial",
-                "novo ponto",
                 "mudanca",
                 "contrato",
                 "falar com atendente"
@@ -175,10 +186,15 @@ public class Analises_Texto
             { "Desbloqueio", new List<string>
             {
                 "paguei",
+                "desbloqueo",
+                "ja esta pago",
                 "pagamento",
                 "pago",
                 "libera",
                 "desbloqueio",
+                "desbloqueio em confianca",
+                "desbloqueio confianca",
+                "desbloqueio de confianca",
                 "desbloqueia",
                 "desbloquear",
                 "comprovante pagamento",
@@ -187,7 +203,9 @@ public class Analises_Texto
             },
             { "Vendas", new List<string>
             {
+            "adquirir plano",
             "planos",
+            "novo ponto",
             "promocao",
             "Olá! Estou fazendo contato atraves do site Melhor Plano",
             "Olá! Gostaria de saber mais sobre o plano",
@@ -195,6 +213,7 @@ public class Analises_Texto
             "Gostaria de saber mais sobre o plano"
             }
             },
+
             { "Cancelamento", new List<string>
             {
             "cancelar",
@@ -202,10 +221,32 @@ public class Analises_Texto
             "cancelamento",
             "cancela"
             }
+
+            },
+             { "Financeiro", new List<string>
+                {
+                "cartao",
+                "credito",
+                "debito",
+                "debitado",
+                "conseguindo pagar",
+                "financeiro",
+                 "endereco",
+                "data",
+                "carne",
+                "nota fiscal",
+                "nf",
+                "mudar endereco"
+            }
             },
             { "Boleto", new List<string>
             {
+            "qr code",
             "boleto",
+            "mandar boleto",
+            "manda boleto",
+            "manda boleta",
+            "boleta",
             "conta",
             "boleta",
             "fatura",
@@ -219,14 +260,13 @@ public class Analises_Texto
             "segunda"
             }
             },
-            { "Saudacao", new List<string>
+            { "Saudação", new List<string>
             {
-                "olá",
+                "ola",
                 "oi",
                 "bom dia",
                 "boa tarde",
-                "boa noite",
-                "oi "
+                "boa noite"
 
             }
             },
@@ -235,17 +275,35 @@ public class Analises_Texto
                 "esse numero nao e",
                 "remover",
                 "nao sou",
-                "apagar"
+                "apagar",
+                "essa pessoa"
 
 
             }
+            },
+             { "Renegociar", new List<string>
+            {
+                "renegociacao",
+                "renegociar",
+                "negociar"
+
             }
+
+            }
+
 
         };
     }
     public static string RetornaClassificacao(string texto)
     {
         return ExecutarClassificacao(texto);
+    }
+     public static string FormataFalha(string texto)
+    {
+        string resultado = Regex.Replace(texto, @"\[.*?\]\n?", string.Empty); // Remove o padrão [.*?]\n
+        resultado = resultado.Replace("Prezado Cliente. Estamos com uma falha massiva em sua região.", string.Empty).Trim();
+        string textoFinal = Regex.Replace(resultado, "[\"\\[\\]]", string.Empty); // Remove as aspas
+        return textoFinal;
     }
 
 }
